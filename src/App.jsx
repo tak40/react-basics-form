@@ -1,8 +1,14 @@
 /** @format */
 import React from 'react'
+import Form from './Form'
 
 function App() {
-    return <h1>Scrimba React Basics: Conditional Reandering</h1>
+    return (
+        <main>
+            <h1>Scrimba React Basics: Conditional Reandering</h1>
+            <Form />
+        </main>
+    )
 }
 
 export default App
