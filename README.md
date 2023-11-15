@@ -4,6 +4,7 @@
 1. [Handling Input Changes](#handling-input-changes)
 2. [Managing Multiple Inputs](#managing-multiple-inputs)
 3. [Using a State Object for Form Data](#using-a-state-object-for-form-data)
+4. [Controlled Inputs](#controlled-inputs)
 
 ## Handling Input Changes
 
@@ -148,6 +149,66 @@ function Form(props) {
 
 export default Form
 ```
+
+## Controlled Inputs
+
+In React, controlled inputs are a way to ensure the form elements like `<input>`, `<textarea>`, and `<select>` maintain their values in the component's state. By setting the `value` attribute of these form elements to a state variable, React becomes the "single source of truth," managing the input's value. This setup means:
+
+- User input triggers an `onChange` event.
+- The event handler updates the React state with the user's input.
+- The input's value is set to reflect the updated React state.
+
+This approach ensures the input field's value is always synchronized with the React state, preventing discrepancies and making the state the sole source of truth for the input value.
+
+[Controlled Inputs](https://scrimba.com/learn/frontend/controlled-inputs-co5c7481f910db53cc421f020)
+
+Here is a code example demonstrating controlled inputs:
+
+```jsx
+import React from "react"
+
+export default function Form() {
+    const [formData, setFormData] = React.useState(
+        {firstName: "", lastName: "", email: ""}
+    )
+    
+    function handleChange(event) {
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+    
+    return (
+        <form>
+            <input
+                type="text"
+                placeholder="First Name"
+                onChange={handleChange}
+                name="firstName"
+                value={formData.firstName}
+            />
+            <input
+                type="text"
+                placeholder="Last Name"
+                onChange={handleChange}
+                name="lastName"
+                value={formData.lastName}
+            />
+            <input
+                type="email"
+                placeholder="Email"
+                onChange={handleChange}
+                name="email"
+                value={formData.email}
+            />
+        </form>
+    )
+}
+```
+
 
 Detailed tutorial: [Forms State Object](https://scrimba.com/learn/frontend/forms-state-object-co4014fe8a23d6c6d376747ca)
 
