@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [Handling Input Changes](#handling-input-changes)
 2. [Managing Multiple Inputs](#managing-multiple-inputs)
+3. [Using a State Object for Form Data](#using-a-state-object-for-form-data)
 
 ## Handling Input Changes
 
@@ -82,6 +83,73 @@ export default function Form() {
     )
 }
 ```
+
+## Using a State Object for Form Data
+
+Consolidating the state into a single state object is a more scalable approach, especially as forms grow in complexity. The `handleChange` function dynamically updates the state based on the input's `name` attribute, using the event object.
+
+#### State as an Object
+- **Scalability**: Using a single state object to store all form input values makes the component more scalable and easier to manage.
+- **Example**: `const [formData, setFormData] = useState({ firstName: '', lastName: '' })`
+
+#### Common handleChange Function
+- **Reusable Logic**: A common `handleChange` function is used for all inputs to handle changes and update the state.
+- **Dynamic Property Update**: The function dynamically updates the correct property in the state object based on the `name` attribute of the input element.
+
+#### Name Attribute
+- **Key Identifier**: The `name` attribute corresponds to the property names in the state object, serving as a key to identify which part of the state needs to be updated.
+
+#### Dynamic Key with Square Brackets
+- **Computed Property Names**: The square brackets `[]` in `[event.target.name]` are not denoting an array. Instead, they are used to set an object key based on a variable's value, known as computed property names in JavaScript.
+
+#### Arrow Function for State Update
+- **Current State Reference**: The arrow function ensures that the state update function uses the most current state.
+- **Functional Update**: Using `prevFormData => {...}` as a functional update is crucial when the new state depends on the old state.
+
+
+```jsx
+import React from 'react'
+import { useState } from 'react'
+
+function Form(props) {
+    const [formData, setFormData] = useState({ firstName: '', lastName: '' })
+
+    console.log(formData)
+
+    function handleChange(event) {
+        const { name, value } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: value
+            }
+        })
+    }
+
+    return (
+        <form>
+            <input
+                type="text"
+                placeholder="First Name"
+                onChange={handleChange}
+                name="firstName"
+                value={formData.firstName}
+            />
+            <input
+                type="text"
+                placeholder="Last Name"
+                onChange={handleChange}
+                name="lastName"
+                value={formData.lastName}
+            />
+        </form>
+    )
+}
+
+export default Form
+```
+
+Detailed tutorial: [Forms State Object](https://scrimba.com/learn/frontend/forms-state-object-co4014fe8a23d6c6d376747ca)
 
 # React + Vite
 
