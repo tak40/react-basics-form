@@ -4,7 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 
 function Form(props) {
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '' })
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', comments: '' })
 
     console.log(formData)
 
@@ -36,6 +36,11 @@ function Form(props) {
                 placeholder='Email'
                 onChange={handleChange}
                 name='email'
+            />
+            <textarea
+                placeholder="Comments" 
+                onChange={handleChange}
+                name="comments"
             />
         </form>
     )

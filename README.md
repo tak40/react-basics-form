@@ -5,6 +5,7 @@
 2. [Managing Multiple Inputs](#managing-multiple-inputs)
 3. [Using a State Object for Form Data](#using-a-state-object-for-form-data)
 4. [Controlled Inputs](#controlled-inputs)
+5. [Handling `<textarea />` in React Forms](#handling-textarea--in-react-forms)
 
 ## Handling Input Changes
 
@@ -107,6 +108,7 @@ Consolidating the state into a single state object is a more scalable approach, 
 - **Current State Reference**: The arrow function ensures that the state update function uses the most current state.
 - **Functional Update**: Using `prevFormData => {...}` as a functional update is crucial when the new state depends on the old state.
 
+[Forms State Object](https://scrimba.com/learn/frontend/forms-state-object-co4014fe8a23d6c6d376747ca)
 
 ```jsx
 import React from 'react'
@@ -209,8 +211,35 @@ export default function Form() {
 }
 ```
 
+## Handling `<textarea />` in React Forms
 
-Detailed tutorial: [Forms State Object](https://scrimba.com/learn/frontend/forms-state-object-co4014fe8a23d6c6d376747ca)
+In React, `<textarea />` elements are used similarly to `<input />` elements to maintain their state. Although `<textarea>` is not self-closing in HTML, in JSX, we use the self-closing tag syntax for convenience and consistency with other input elements. The `value` of the `<textarea />` is controlled by a state variable, which ensures the text area remains in sync with the state.
+
+[Forms in React: Textarea](https://scrimba.com/learn/frontend/forms-in-react-textarea-cob6a41f7a22250f5f9bdf71e)
+
+Here's how you can use `<textarea />` in a controlled manner:
+
+```jsx
+import React from "react"
+
+export default function Form() {
+    // ...existing state and handleChange function
+    
+    return (
+        <form>
+            {/* ...existing inputs */}
+            <textarea 
+                value={formData.comments}
+                placeholder="Comments"
+                onChange={handleChange}
+                name="comments"
+            />
+        </form>
+    )
+}
+```
+
+
 
 # React + Vite
 
