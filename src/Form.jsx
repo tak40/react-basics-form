@@ -5,11 +5,17 @@ import { useState } from 'react'
 
 function Form(props) {
     const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
     console.log(firstName)
+    console.log(lastName)
 
-    function handleChange(event) {
+    function handleFirstNameChange(event) {
         setFirstName(event.target.value)
+    }
+
+    function handleLastNameChange(event) {
+        setLastName(event.target.value)
     }
 
     return (
@@ -17,7 +23,12 @@ function Form(props) {
             <input
                 type="text"
                 placeholder="First Name"
-                onChange={handleChange}
+                onChange={handleFirstNameChange}
+            />
+            <input
+                type="text"
+                placeholder="Last Name"
+                onChange={handleLastNameChange}
             />
         </form>
     )
