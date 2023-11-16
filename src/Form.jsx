@@ -11,6 +11,7 @@ function Form(props) {
         comments: '',
         valorant: true,
         employment: '',
+        favAgent: '',
     })
 
     function handleChange(event) {
@@ -97,6 +98,36 @@ function Form(props) {
                 <label htmlFor="full-time">Full-time</label>
                 <br />
             </fieldset>
+
+            <label htmlFor="favAgent">Who is your favorite Valorant agent?</label>
+            <select
+                name="favAgent"
+                id="favAgent"
+                value={formData.favAgent}
+                onChange={handleChange}
+            >
+                <option value="">-- Please choose an agent --</option>
+                <option value="jett">Jett</option>
+                <option value="raze">Raze</option>
+                <option value="phoenix">Phoenix</option>
+                <option value="sage">Sage</option>
+                <option value="sova">Sova</option>
+                <option value="viper">Viper</option>
+                <option value="cypher">Cypher</option>
+                <option value="brimstone">Brimstone</option>
+                <option value="omen">Omen</option>
+                <option value="breach">Breach</option>
+                <option value="reyna">Reyna</option>
+                <option value="killjoy">Killjoy</option>
+                <option value="skye">Skye</option>
+                <option value="yoru">Yoru</option>
+                <option value="astra">Astra</option>
+                <option value="kayo">Kayo</option>
+                <option value="chamber">Chamber</option>
+                <option value='harbor'>Harbor</option>
+                <option value='deadlock'>Deadlock</option>
+                <option value='iso'>Iso</option>
+            </select>
         </form>
     )
 }
