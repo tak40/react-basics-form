@@ -5,7 +5,7 @@ import Form from './Form'
 function App() {
     return (
         <main>
-            <h1>Scrimba React Basics: Conditional Reandering</h1>
+            <h1>Scrimba React Basics: Forms</h1>
             <Form />
         </main>
     )

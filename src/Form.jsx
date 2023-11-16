@@ -9,7 +9,7 @@ function Form(props) {
         lastName: '',
         email: '',
         comments: '',
-        valorant: true,
+        isFriendly: true,
         employment: '',
         favAgent: '',
     })
@@ -24,22 +24,29 @@ function Form(props) {
         })
     }
 
+    function handleSubmit(event) {
+        event.preventDefault()
+        console.log(formData)
+    }
+
     return (
-        <form>
-            <input
-                type="text"
-                placeholder="First Name"
-                onChange={handleChange}
-                name="firstName"
-                value={formData.firstName}
-            />
-            <input
-                type="text"
-                placeholder="Last Name"
-                onChange={handleChange}
-                name="lastName"
-                value={formData.lastName}
-            />
+        <form onSubmit={handleSubmit}>
+            <div className="name">
+                <input
+                    type="text"
+                    placeholder="First Name"
+                    onChange={handleChange}
+                    name="firstName"
+                    value={formData.firstName}
+                />
+                <input
+                    type="text"
+                    placeholder="Last Name"
+                    onChange={handleChange}
+                    name="lastName"
+                    value={formData.lastName}
+                />
+            </div>
             <input
                 type="email"
                 placeholder="Email"
@@ -53,81 +60,73 @@ function Form(props) {
                 name="comments"
                 value={formData.comments}
             />
-            <input
-                type="checkbox"
-                id="valorant"
-                checked={formData.valorant}
-                onChange={handleChange}
-                name="valorant"
-            />
-            <label htmlFor="valorant">Are you gonna be the match MVP?</label>
+
+            <label htmlFor="isFriendly" className='friendly-text'>
+                <input
+                    type="checkbox"
+                    id="isFriendly"
+                    checked={formData.isFriendly}
+                    onChange={handleChange}
+                    name="isFriendly"
+                />
+                Are you friendly?
+            </label>
 
             <fieldset>
                 <legend>Current employment status</legend>
-
-                <input
-                    type="radio"
-                    id="unemployed"
-                    name="employment"
-                    value="unemployed"
-                    checked={formData.employment === 'unemployed'}
-                    onChange={handleChange}
-                />
-                <label htmlFor="unemployed">Unemployed</label>
+                <label htmlFor="unemployed">
+                    <input
+                        type="radio"
+                        id="unemployed"
+                        name="employment"
+                        value="unemployed"
+                        checked={formData.employment === 'unemployed'}
+                        onChange={handleChange}
+                    />
+                    Unemployed
+                </label>
                 <br />
-
-                <input
-                    type="radio"
-                    id="part-time"
-                    name="employment"
-                    value="part-time"
-                    checked={formData.employment === 'part-time'}
-                    onChange={handleChange}
-                />
-                <label htmlFor="part-time">Part-time</label>
+                <label htmlFor="part-time">
+                    <input
+                        type="radio"
+                        id="part-time"
+                        name="employment"
+                        value="part-time"
+                        checked={formData.employment === 'part-time'}
+                        onChange={handleChange}
+                    />
+                    Part-time
+                </label>
                 <br />
-
-                <input
-                    type="radio"
-                    id="full-time"
-                    name="employment"
-                    value="full-time"
-                    checked={formData.employment === 'full-time'}
-                    onChange={handleChange}
-                />
-                <label htmlFor="full-time">Full-time</label>
+                <label htmlFor="full-time">
+                    <input
+                        type="radio"
+                        id="full-time"
+                        name="employment"
+                        value="full-time"
+                        checked={formData.employment === 'full-time'}
+                        onChange={handleChange}
+                    />
+                    Full-time
+                </label>
                 <br />
             </fieldset>
 
-            <label htmlFor="favAgent">Who is your favorite Valorant agent?</label>
+            <label htmlFor="favColor" className='favColor'>What is your favorite color?</label>
             <select
-                name="favAgent"
-                id="favAgent"
-                value={formData.favAgent}
+                name="favColor"
+                id="favColor"
+                value={formData.favColor}
                 onChange={handleChange}
             >
-                <option value="">-- Please choose an agent --</option>
-                <option value="jett">Jett</option>
-                <option value="raze">Raze</option>
-                <option value="phoenix">Phoenix</option>
-                <option value="sage">Sage</option>
-                <option value="sova">Sova</option>
-                <option value="viper">Viper</option>
-                <option value="cypher">Cypher</option>
-                <option value="brimstone">Brimstone</option>
-                <option value="omen">Omen</option>
-                <option value="breach">Breach</option>
-                <option value="reyna">Reyna</option>
-                <option value="killjoy">Killjoy</option>
-                <option value="skye">Skye</option>
-                <option value="yoru">Yoru</option>
-                <option value="astra">Astra</option>
-                <option value="kayo">Kayo</option>
-                <option value="chamber">Chamber</option>
-                <option value='harbor'>Harbor</option>
-                <option value='deadlock'>Deadlock</option>
-                <option value='iso'>Iso</option>
+                <option value="">-- Please choose a color --</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
             </select>
+            <button>Submit</button>
         </form>
     )
 }
