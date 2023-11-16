@@ -12,6 +12,7 @@
 6. [Implementing Checkboxes in React Forms](#implementing-checkboxes-in-react-forms)
 7. [Handling Radio Buttons in React Forms](#handling-radio-buttons-in-react-forms)
 8. [Understanding Select Inputs in React](#understanding-select-inputs-in-react)
+9. [Handling Form Submission in React](#handling-form-submission-in-react)
 
 ## Handling Input Changes
 
@@ -400,6 +401,26 @@ Here's a basic example of a `<select>` element in React:
 </select>
 ```
 
+### Handling Form Submission in React
+
+- **Form Submission Event**: In React, a `<button>` inside a form defaults to `type="submit"`.
+- **Triggering onSubmit**: Clicking the button triggers the form's `onSubmit` event.
+- **handleSubmit Function**: This event calls a function, typically named `handleSubmit`.
+- **Prevent Default Behavior**: `handleSubmit` usually starts with `event.preventDefault()` to stop the form's default submission behavior.
+- **Handling Form Data**: The function then processes the form data as required.
+
+#### Code Example:
+```jsx
+<form onSubmit={handleSubmit}>
+    {/* Form elements */}
+    <button>Submit</button>
+</form>
+
+function handleSubmit(event) {
+    event.preventDefault();
+    // Logic to handle form submission
+}
+```
 
 # React + Vite
 
